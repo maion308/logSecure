@@ -1,0 +1,14 @@
+<%- include('header') %>
+<form action="/register" method="post">
+    <label for="firstName">📛First Name</label>
+    <input type="text" name="firstName" required>
+    <label for="lastName">📛First Name</label>
+    <input type="text" name="lastName" required>
+    <label for="email">📧Email</label>
+    <input type="email" name="email" required>
+    <label for="password">Password</label>
+    <input type="password" name="password" required>
+    <label for="confirm">Confirm Email</label>
+    <input type="password" name="confirm">
+</form>
+<%- include('footer') %>
