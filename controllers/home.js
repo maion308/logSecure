@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
 
-exports.homePage = (req, res) => {
-    res.render('home', { heading: 'Home' })
+exports.homePage = async (req, res) => {
+    await res.render('home', { header: 'Home' })
 }

@@ -1,8 +1,14 @@
 <%- include('header') %>
-<form action="/register" method="post">
+<% if(header) { %>
+<% } %>
+<% if(msglg) { %>
+    <p class="form-msg"><%= msglg %></p>
+<% } %>
+<form action="/login" method="post">
     <label for="email">📧Email</label>
     <input type="email" name="email" required>
     <label for="password">Password</label>
     <input type="password" name="password" required>
+    <button>login</button>
 </form>
 <%- include('footer') %>

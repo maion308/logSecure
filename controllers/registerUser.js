@@ -4,25 +4,37 @@ const { User } = require('../models/User')
 const bcrypt = require('bcrypt')
 
 exports.getRegisterForm = async (req, res) => {
-    await res.render('register', {msg: ''})
+    await res.render('register', {
+        msg: '',
+        header: 'Register'
+    })
 }
 
 exports.registerUser = async (req, res) => {
     const { firstName, lastName, email, password, confirm } = req.body
     const saltRounds = 10
     if(!firstName || !lastName || !email || !password || !confirm) {
-        await res.render('register', {msg: 'required fields missing'})
+        await res.render('register', {
+            msg: 'required fields missing',
+            header: 'Register'
+        })
     }
     if(password != confirm) {
-        await res.render('register', {msg: 'passwords do not match'})
+        await res.render('register', {
+            msg: 'passwords do not match',
+            header: 'register'
+        })
     } else {
         try {
             User.findOne({email: email}, async (err, foundUser) => {
-    
-    
+
+
                 if(!err) {
                     if(foundUser) {
-                        await res.render('register', {msg: `An account associated with ${foundUser.email}  already exists`})
+                        await res.render('register', {
+                            msg: `An account associated with ${foundUser.email}  already exists`,
+                            header: 'Register'
+                        })
                     } else {
                         bcrypt.hash(password, saltRounds, (err, hash) => {
                             if(!err) {
